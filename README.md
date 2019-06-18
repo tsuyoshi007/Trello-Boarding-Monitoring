@@ -9,7 +9,7 @@
 **Getting Application Key and User Token**
 Before you use these system, please go to https://trello.com/app-key and get the application key and user token.
 
-**Note**: APPLICATION_KEY, USER_TOKEN, MEMBER_ID, BOARD_ID will be passed into the function as a [!string][1]
+**Note**: APPLICATION_KEY, USER_TOKEN, MEMBER_ID, BOARD_ID will be passed into the function as a [string][1]
 
 ### Inside .env file
 
@@ -25,13 +25,10 @@ You also need :
   -**neDB**
   -**cron**
 
-**Getting Board_ID and Card_ID**
+**Getting Board_ID**
 
 ![board_id](https://user-images.githubusercontent.com/45678324/59160759-db2f8c80-8b03-11e9-830c-4df00f8de105.png)
 Board_ID was underlined
-
-![card_id](https://user-images.githubusercontent.com/45678324/59160763-dcf95000-8b03-11e9-9861-6fbec55bee20.png)
-Card_ID was underlined
 
 ### Installing
 
