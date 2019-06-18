@@ -22,7 +22,7 @@ Before you use these system, please go to https://trello.com/app-key and get the
 You also need :
   -**Trello**
   -**dotEnv**
-  -**neDB**
+  -**nedb**
   -**cron**
 
 **Getting Board_ID**
