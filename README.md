@@ -13,10 +13,10 @@ Before you use these system, please go to https://trello.com/app-key and get the
 
 ### Inside .env file
 
-APP_KEY=[!string][1]
-USR_TOKEN=[!string][1]
-MB_ID=[!string][1]
-BOARD_ID=[!string][1]
+* APP_KEY=[string][1]
+* USR_TOKEN=[string][1]
+* MB_ID=[string][1]
+* BOARD_ID=[string][1]
 
 
 You also need :
