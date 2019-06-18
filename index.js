@@ -126,19 +126,19 @@ async function compareReqData () {
 
     // check if there is any card to remove
     if (CARD_REMOVE.length) {
-      let error_card;
+      let errorCard;
       CARD_REMOVE.forEach(link => {
         db.remove({ shortLink: link }, function (err) {
           if (err) {
             console.log('An error occured:', err);
-            error_card=err;
+            errorCard = err;
           }
         });
       });
-      if(!error_card){
+      if (!errorCard) {
         console.log('Removed Card:');
         removeCard().forEach(card => {
-          console.log('   ',card.name);
+          console.log('   ', card.name);
         });
       }
     }
@@ -177,40 +177,39 @@ async function compareReqData () {
       const LABEL_ADD = REQ_LABEL.diff(CURRENT_LABEL);
       const LABEL_REMOVE = CURRENT_LABEL.diff(REQ_LABEL);
 
-
-      const LABEL_TO_ADD = LABEL_ADD.map(labelName=>{
-        return cards[1].labels.filter(label=>{
+      const LABEL_TO_ADD = LABEL_ADD.map(labelName => {
+        return cards[1].labels.filter(label => {
           return label.name === labelName;
         })[0];
       });
-      
-      const LABEL_TO_REMOVE = LABEL_REMOVE.map(labelName=>{
-        return cards[0].labels.filter(label=>{
+
+      const LABEL_TO_REMOVE = LABEL_REMOVE.map(labelName => {
+        return cards[0].labels.filter(label => {
           return label.name === labelName;
         })[0];
       });
 
       if (LABEL_REMOVE.length) {
-        let error_label;
-        LABEL_TO_REMOVE.forEach(label=>{
+        let errorLabel;
+        LABEL_TO_REMOVE.forEach(label => {
           db.update({ shortLink: cards[0].shortLink }, { $pull: { labels: label } }, {}, function (err) {
-            if(err){
-              console.log("An error occured:",err);
-              error_label=err;
+            if (err) {
+              console.log('An error occured:', err);
+              errorLabel = err;
             }
           });
         });
-        if(!error_label){
-          console.log('Removed Label:', LABEL_REMOVE,' from card: ',cards[0].name);
+        if (!errorLabel) {
+          console.log('Removed Label:', LABEL_REMOVE, ' from card: ', cards[0].name);
         }
       }
 
-      if(LABEL_ADD.length){
-        db.update({ shortLink:cards[0].shortLink }, { $push: { labels:{ $each: LABEL_TO_ADD }  } }, {}, function (err) {
-          if(err){
-            console.log("An error occured:",err);
-          }else{
-            console.log("New Label:",LABEL_ADD," to card: ",cards[0].name);
+      if (LABEL_ADD.length) {
+        db.update({ shortLink: cards[0].shortLink }, { $push: { labels: { $each: LABEL_TO_ADD } } }, {}, function (err) {
+          if (err) {
+            console.log('An error occured:', err);
+          } else {
+            console.log('New Label:', LABEL_ADD, ' to card: ', cards[0].name);
           }
         });
       }
@@ -228,7 +227,7 @@ async function start () {
   compareReqData();
 }
 
-const job = new CronJob('*/5 * * * * *', function () {
+const job = new CronJob('* */1 * * * *', function () {
   start();
 });
 
