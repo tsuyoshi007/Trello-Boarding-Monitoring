@@ -1,0 +1,17 @@
+{
+  "name": "trelloboardmonitoring",
+  "version": "1.0.0",
+  "description": "realtime event checking",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "Hun Vikran",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^1.7.1",
+    "dotenv": "^8.0.0",
+    "nedb": "^1.8.0",
+    "trello": "^0.9.1"
+  }
+}
